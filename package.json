@@ -19,9 +19,12 @@
   "homepage": "https://github.com/kiambati-maxwel/mongo_chat_app#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.9.3"
+    "http": "0.0.0",
+    "mongoose": "^5.9.3",
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "ws": "3.3.2"
   }
 }
