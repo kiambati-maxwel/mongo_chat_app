@@ -7,7 +7,8 @@ const message = require('./models/models');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
-// Enable CORS
+//------ Enable CORS
+
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
@@ -31,7 +32,7 @@ app.use(express.urlencoded({
 app.use('/api/messages', require('./routes/api/messages'));
 
 
-// set static folder 
+// ------set static folder 
 
 app.use(express.static(path.join(__dirname, 'access')));
 
@@ -63,6 +64,7 @@ io.on('connection', client => {
     console.log('new user connected');
 
     // ---- hundle name prompt input 
+
     const users = {};
     client.on('new-user', name => {
         users[client.id] = name;
@@ -79,11 +81,18 @@ io.on('connection', client => {
         delete users[client.id];
     });
 
-    client.on('last-text', lastText => {
 
-        // console.log(lastText) ---- test
+    client.on('emit-chat', message => {
+        console.log(message);
+        client.broadcast.emit('emit-chat', message)
+    })
 
-        client.broadcast.emit('sent-last-text', lastText);
-    });
+
+    /*----- leads the last element data from the data base ----*/
+    // client.on('last-text', lastText => {
+    //     // console.log(lastText) ---- test
+    //     client.broadcast.emit('sent-last-text', lastText);
+    // });
+
 
 });
