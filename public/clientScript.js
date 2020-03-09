@@ -1,4 +1,12 @@
-const client = io('http://127.0.0.1:3000');
+const client = io();
+
+// ------ alert timeout 2seconds---
+
+// window.onload = setTimeout(function () {
+//     alert('This is an alert');
+//     window.location = 'http://localhost:3000';
+// }, 5000);
+
 
 // ---- manipulate the DOM
 
@@ -7,7 +15,8 @@ const messageForm = document.querySelector('#send-container');
 const messageInput = document.querySelector('#message-input');
 const deleteDb = document.querySelector('#delete');
 const text_area = document.querySelector('#text-area');
-
+const isTyping  = document.querySelector('#isTyping');
+ 
 
 // ----- get name and emit it to all connected sockets
 
@@ -18,14 +27,41 @@ client.emit('new-user', name);
 
 // ----- log the name to connected sockets
 client.on('user-connected', name => {
-    window.alert(`${name} connected`);
+    setTimeout(() => {
+        window.alert(`${name} connected`);
+    },1000);
 });
 
 // ---- disconnected 
 
 client.on('user-disconnected', name => {
-    window.alert(`${name} --- disconnected`);
+    window.alert(`${name} --- disconnected`)
 })
+
+
+//----isTyping event
+
+messageInput.addEventListener("keypress", () => {
+    client.emit("typing", {
+        message: "typing....."
+    });
+
+});
+
+client.on("notifyTyping", data => {
+    isTyping.innerText = data.message;
+    console.log(data.message);
+});
+
+//-----stop typing
+messageInput.addEventListener("keyup", () => {
+    client.emit("stopTyping", "");
+});
+
+client.on("notifyStopTyping", () => {
+    isTyping.innerText = "";
+
+});
 
 
 // ---- function manipulate text area content
@@ -87,6 +123,7 @@ messageForm.addEventListener('submit', e => {
 
 deleteDb.addEventListener('click', () => {
     deletall();
+    window.alert('data base ducuments deleted!!!');
 })
 
 
@@ -103,7 +140,7 @@ function addMessages(message) {
 // --- get request message function
 
 function getMessages() {
-    $.get('http://127.0.0.1:3000/api/messages', async (data) => {
+    $.get('http://192.168.102:3000/api/messages', async (data) => {
 
         const counter = data.length;
 
@@ -120,7 +157,7 @@ function getMessages() {
 // --------- post request -----
 
 async function sendMessage(message) {
-    await $.post('http://localhost:3000/api/messages', message)
+    await $.post('http://192.168.8.102:3000/api/messages', message)
 }
 
 // ------- delete request -----

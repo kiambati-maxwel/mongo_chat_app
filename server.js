@@ -7,20 +7,30 @@ const message = require('./models/models');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
+
 //------ Enable CORS
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Headers", "Content-Type");
+    res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
     next();
 });
 
+
+// app.use(function (req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+//     next();
+// });
+
 // --- port 3000 --- if not --- open port
 
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000 || "0,0,0,0";
 
-server.listen(PORT);
+server.listen(3000, '0.0.0.0');
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -34,7 +44,7 @@ app.use('/api/messages', require('./routes/api/messages'));
 
 // ------set static folder 
 
-app.use(express.static(path.join(__dirname, 'access')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // --- connect mongoose atlass db
 
@@ -61,7 +71,7 @@ mongoose.connection.once('open', () => {
 // ------ socket.io --------- 
 
 io.on('connection', client => {
-    console.log('new user connected');
+    console.log(`${client.id} ---- connected`);
 
     // ---- hundle name prompt input 
 
@@ -83,9 +93,25 @@ io.on('connection', client => {
 
 
     client.on('emit-chat', message => {
-        console.log(message);
+        // console.log(message);
         client.broadcast.emit('emit-chat', message)
     })
+
+
+    //Someone is typing
+
+    client.on("typing", data => {
+        // console.log(data.message);
+        client.broadcast.emit("notifyTyping", {
+            message: data.message
+        });
+    });
+
+    //when soemone stops typing
+
+    client.on("stopTyping", () => {
+        client.broadcast.emit("notifyStopTyping");
+    });
 
 
     /*----- leads the last element data from the data base ----*/
