@@ -53,7 +53,10 @@ client.on("notifyTyping", data => {
     console.log(data.message);
 });
 
-//-----stop typing
+// //-----stop typing
+// messageInput.addEventListener("keyup", () => {
+//     client.emit("stopTyping", "");
+// });
 messageInput.addEventListener("keyup", () => {
     client.emit("stopTyping", "");
 });
@@ -140,7 +143,7 @@ function addMessages(message) {
 // --- get request message function
 
 function getMessages() {
-    $.get('http://192.168.102:3000/api/messages', async (data) => {
+    $.get('http://192.168.100:3000/api/messages', async (data) => {
 
         const counter = data.length;
 
@@ -157,7 +160,7 @@ function getMessages() {
 // --------- post request -----
 
 async function sendMessage(message) {
-    await $.post('http://192.168.8.102:3000/api/messages', message)
+    await $.post('http://192.168.8.100:3000/api/messages', message)
 }
 
 // ------- delete request -----
@@ -165,7 +168,8 @@ async function sendMessage(message) {
 function deletall() {
     $.ajax({
         method: 'DELETE',
-        url: 'http://localhost:3000/api/messages',
+        url: 'http://127.0.0.1:3000/api/messages',
+        contentType: 'application/json',
         success: function () {
             console.log('success');
         },

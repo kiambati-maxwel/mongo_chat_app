@@ -38,8 +38,12 @@ body {
     box-sizing: border-box;
     border: none;
     background: transparent;
-    font-family: 'Indie Flower', cursive;
+    font-size: 20px;
     font-family: 'Source Code Pro', monospace;
+    font-family: 'Indie Flower', cursive;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: rgb(14, 13, 13)
 }
 
 #message-input {
@@ -110,7 +114,7 @@ body {
     padding: 5px;
     position: absolute;
     left: 75%;
-    top: 100%;
+    top: 150%;
     
 }
 
