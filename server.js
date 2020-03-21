@@ -94,8 +94,8 @@ io.on('connection', client => {
 
     client.on('emit-chat', message => {
         // console.log(message);
-        client.broadcast.emit('emit-chat', message)
-    })
+        client.broadcast.emit('emit-chat', message);
+    });
 
 
     //Someone is typing
@@ -105,7 +105,10 @@ io.on('connection', client => {
         client.broadcast.emit("notifyTyping", {
             message: data.message
         });
-    });
+    });//  lastText = dataOf[counter-2];
+    // ------ previous ---- getMessages();
+    //  console.log(lastTexts);
+    // data.fgetMessages();orEach(addMessages);
 
     //when soemone stops typing
 
@@ -115,10 +118,10 @@ io.on('connection', client => {
 
 
     /*----- leads the last element data from the data base ----*/
-    // client.on('last-text', lastText => {
-    //     // console.log(lastText) ---- test
-    //     client.broadcast.emit('sent-last-text', lastText);
-    // });
+    client.on('last-text', lastText => {
+        console.log(lastText.message);
+        client.broadcast.emit('sent-last-text', lastText);
+    });
 
 
 });

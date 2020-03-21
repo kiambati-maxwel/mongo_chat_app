@@ -22,7 +22,7 @@ body {
 .container {
     border: solid 2px #2196F3;
     width: 70%;
-    margin: 100px auto;
+    margin: 50px auto;
     height: 100%;
     padding-top: 50px;
     border-radius: 5px;
@@ -38,12 +38,13 @@ body {
     box-sizing: border-box;
     border: none;
     background: transparent;
-    font-size: 20px;
+    font-size: 30px;
     font-family: 'Source Code Pro', monospace;
     font-family: 'Indie Flower', cursive;
     font-weight: 800;
     letter-spacing: 4px;
-    color: rgb(14, 13, 13)
+    color: rgb(14, 13, 13);
+    position: relative;
 }
 
 #message-input {
@@ -61,8 +62,6 @@ body {
     font-weight: 900;
     letter-spacing: 4px;
     color: rgb(255, 0, 0);
-    ;
-
 }
 
 #isTyping {
@@ -96,6 +95,40 @@ body {
 }
 
 /* ----- buttons -------- */
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.previous, .next{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 55%;
+}
+
+.previous {
+    background-color: #4CAF50;
+    color: black;
+}
+
+.next {
+    margin-left: 618px;
+    background-color: #4CAF50;
+    color: black;
+}
+
+.round {
+    border-radius: 50%;
+    font-size: 30px;
+}
+
 .btn {
     padding: 10px;
     border: none;
@@ -114,7 +147,7 @@ body {
     padding: 5px;
     position: absolute;
     left: 75%;
-    top: 150%;  
+    top: 150%;
 }
 
 /* ----- text area --- */
@@ -145,6 +178,15 @@ body {
         border: 0;
     }
 
+    .next{
+        margin-left: 76%;
+    }
+    .previous{
+        margin-left: 1%;
+    }
+    .next, .previous{
+        top: 40%;
+    }
     #message-input {
         margin-top: 20%;
         width: 80%;
@@ -167,9 +209,10 @@ body {
         margin-left: 36%;
         margin-bottom: 20px;
     }
-    .btn-deletedb{
+
+    .btn-deletedb {
         height: 40px;
         display: none;
-      
+
     }
 }
