@@ -17,8 +17,11 @@ router.get('/', async (req, res) => {
 // ------ post api request
 
 router.post('/', async (req, res) => {
+  res.json({
+    message: 'im probably ganna return an error'
+  })
   let messages = new messageModel(req.body);
-
+  
   // console.log(messages) --- test
 
   await messages.save((err) => {

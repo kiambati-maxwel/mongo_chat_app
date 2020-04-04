@@ -12,19 +12,26 @@
 <body>
 
     <div class="container group">
-        <!-- empty div saves the message -->
-        <div id="message-container"></div>
+
+    <div class="logo">
+        <img src="./prg.png" alt="lets chat">
+        <h1>lets talk ...</h1>
+    </div>
 
         <div class="receive-message">
-            <!-- <div id="text-area"></div> -->
-            <textarea name="textarea" id="text-area" cols="30" rows="10"></textarea>
-            <section id="isTyping"></section>
+            <div><textarea name="textarea" contenteditable="false" id="text-area" cols="30" rows="10" ></textarea></div>
+          <section id="isTyping">typing...</section>
+
+        <form action="" id="previous-text"><button type="submit"  id="previous">&#8249;&#8249;</button></form>  
+        <form action="" id="next-text"><button type="submit" id="next">&#8250;&#8250;</button></form> 
+        
+         
         </div>
                             <!-- form -->
         <form action="" id="send-container">
 
-            <textarea name="txt" id="message-input" placeholder=".....type text ..." cols="30" class="group"
-                rows="5"></textarea>
+            <div><textarea name="txt" id="message-input" placeholder=".....type text ..." cols="30" class="group"
+                rows="5" ></textarea></div>
 
             <br>
 
@@ -39,7 +46,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
 
-    <!-- <script src="./client2.js"></script> -->
+    <!-- <script src="./clientScript.js"></script> -->
 
 </body>
 

@@ -15,14 +15,14 @@ const messageInput = document.querySelector('#message-input');
 const deleteDb = document.querySelector('#delete');
 const text_area = document.querySelector('#text-area');
 const isTyping = document.querySelector('#isTyping');
-const previous = document.querySelector('.previous');
-const next = document.querySelector('.next');
+const previous = document.querySelector('#previous-text');
+const next = document.querySelector('#next-text');
 
 
 // ----- get name and emit it to all connected sockets
 
 const name = prompt('what is your name ? ');
-appendMessage('....welcome..... ');
+// appendMessage('....welcome..... ');
 client.emit('new-user', name);
 
 
@@ -143,17 +143,18 @@ function addMessages(message) {
 
 var counter = 0;
 var dataOf = [];
-var lastText ;
+var lastText;
 
 // ---------------------------------
-async function geet(){
+async function geet() {
     await getMessages();
- }
- 
- geet();
+}
 
-previous.addEventListener('click', ()=>{
-    lastText = dataOf[counter -1];
+geet();
+
+previous.addEventListener('submit', e => {
+    e.preventDefault();
+    lastText = dataOf[counter - 1];
     manipText(lastText.message);
     // client.emit('last-text', lastText);
     console.log(lastText.message);
@@ -162,7 +163,8 @@ previous.addEventListener('click', ()=>{
     console.log(counter);
 });
 
-next.addEventListener('click', ()=>{
+next.addEventListener('submit', e => {
+    e.preventDefault();
     lastText = dataOf[counter + 1];
     manipText(lastText.message);
     counter = counter + 1;
@@ -171,18 +173,14 @@ next.addEventListener('click', ()=>{
 // --- get request message function
 
 function getMessages() {
-    $.get('http://127.0.0.1:3000/api/messages', async (data) => {
+    $.get('http://0.0.0.0:3000/api/messages', async (data) => {
 
-         counter = data.length;
-         data.forEach(element => {
+        counter = data.length;
+        data.forEach(element => {
             dataOf.push(element);
-         });
-         
-         console.log(dataOf);
-        //  lastText = dataOf[counter-2];
-        // ------ previous ---- getMessages();
-        //  console.log(lastTexts);
-        // data.fgetMessages();orEach(addMessages);
+        });
+
+        console.log(dataOf);
         console.log(counter);
     });
 };
@@ -190,7 +188,7 @@ function getMessages() {
 // --------- post request -----
 
 async function sendMessage(message) {
-    await $.post('http://127.0.0.1:3000/api/messages', message);
+    await $.post('http://0.0.0.0:3000/api/messages', message);
 };
 
 // ------- delete request -----
@@ -198,7 +196,7 @@ async function sendMessage(message) {
 function deletall() {
     $.ajax({
         method: 'DELETE',
-        url: 'http://127.0.0.1:3000/api/messages',
+        url: 'http://0.0.0.0:3000/api/messages',
         contentType: 'application/json',
         success: function () {
             console.log('success');
