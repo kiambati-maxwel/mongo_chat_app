@@ -1,0 +1,30 @@
+{
+  "name": "socket-io-chat-app",
+  "version": "1.0.0",
+  "description": "this is a mongodb chat",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiambati-maxwel/mongo_chat_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiambati-maxwel/mongo_chat_app/issues"
+  },
+  "homepage": "https://github.com/kiambati-maxwel/mongo_chat_app#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.0",
+    "mongoose": "^5.9.3",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "ws": "3.3.2"
+  }
+}
