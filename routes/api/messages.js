@@ -8,6 +8,11 @@ const messageModel = require('../../models/models')
 router.get('/', async (req, res) => {
   await messageModel.find({}, (err, messages) => {
     res.send(messages);
+    if(err){
+      res.status(500);
+      console.error(err);
+      console.log(err);
+    }
 
     // console.log(messages) -----test
 
@@ -17,9 +22,7 @@ router.get('/', async (req, res) => {
 // ------ post api request
 
 router.post('/', async (req, res) => {
-  res.json({
-    message: 'im probably ganna return an error'
-  })
+
   let messages = new messageModel(req.body);
   
   // console.log(messages) --- test

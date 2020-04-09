@@ -1,47 +1,51 @@
 /* ----- reset ------- */
-*{
+* {
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     background-color: rgb(210, 234, 255);
-    
+
 }
 
 /* ----- layout ------ */
 *,
-*:before,f
-*:after {
+*:before,
+f *:after {
     -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* --- clear fix --- */
 
 .group:before,
-.group:after{
+.group:after {
     content: '';
     display: table;
 }
-.group:after{
+
+.group:after {
     clear: both;
 }
-.group{
+
+.group {
     clear: both;
     zoom: 1;
 }
 
 /* -- logo --- */
 
-.logo img{
+.logo img {
     height: 150px;
     width: 150px;
     position: absolute;
     border-radius: 50%;
     left: 15%;
 }
-.logo h1{
+
+.logo h1 {
     position: absolute;
     left: 23%;
     top: 8%;
@@ -49,8 +53,8 @@ body{
     color: rgba(0, 0, 0, 0.863);
 }
 
-/* --- istyping --- */
-#isTyping{
+/* --- istyping to hundle typing info --- */
+#isTyping {
     height: 10px;
     width: 200px;
     margin: 0 auto;
@@ -61,78 +65,90 @@ body{
     font-size: 20px;
     letter-spacing: 1;
 }
-/* --- receieve-message --- */
 
-.receive-message{
+/* --- receieve-message section --- */
+
+.receive-message {
     margin: 0 auto;
     padding-top: 100px;
     position: relative;
 }
 
-.receive-message div{
+.receive-message div {
     width: 55%;
     margin-left: 20%;
     height: 200px;
     border-left: solid 2px black;
     box-shadow: -10px -10px 15px rgba(0, 0, 0, 0.4);
     border-radius: 5px;
-    
+
 }
-#text-area{
+
+#text-area {
     padding: 40px;
     border-radius: 5px;
     width: 100%;
     overflow: auto;
     height: 209px;
     border: none;
-    background-color: rgba(239, 247, 255,0);
+    background-color: rgba(239, 247, 255, 0);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.5rem;
     font-size: 25px;
     letter-spacing: 3px;
     background-color: rgb(216, 234, 250);
 }
-#text-are:focus{
-    border: none;
-}
-#text-area:focus-within{
+
+#text-are:focus {
     border: none;
 }
 
-/* --- previous next btn */
-#previous-text, #next-text{
+#text-area:focus-within {
+    border: none;
+}
+
+/* --- previous next btn --- */
+
+#previous-text,
+#next-text {
     width: 50px;
     height: 50px;
     position: absolute;
 }
+
 #previous-text {
-   
+
     top: 35%;
     left: 18.5%;
 }
-#next-text{
-    
+
+#next-text {
+
     right: 23%;
     top: 35%;
 }
-#previous, #next{
+
+#previous,
+#next {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     border: none;
     background-color: rgb(155, 255, 137);
-    /* position: absolute; */
+
 }
-#previous{
-    /* top: 58%;
-    left: 18.5%; */
+
+#previous {
     border-left: solid black 2px;
     font-size: 30px;
 }
-#previous:hover, #next:hover{
+
+#previous:hover,
+#next:hover {
     cursor: pointer;
 }
-#next{
+
+#next {
     font-size: 30px;
     /* right: 23%;
     top: 58%; */
@@ -140,11 +156,12 @@ body{
 
 /* --- send container --- */
 
-form{
+form {
     padding-top: 90px;
     position: relative;
 }
-#message-input{
+
+#message-input {
     border: black 1px solid;
     height: 120px;
     width: 35%;
@@ -160,58 +177,65 @@ form{
 
 /* --- send btn --- */
 
-#send-button{
+#send-button {
     height: 60px;
     width: 60px;
     border-radius: 50%;
     border: none;
     position: absolute;
-    left: 62%; 
+    left: 62%;
     top: 61%;
     background-color: rgb(155, 255, 137);
 }
-#send-button:hover{
-cursor: pointer;
+
+#send-button:hover {
+    cursor: pointer;
 }
 
-.btn-deletedb{
+.btn-deletedb {
     display: none;
 }
 
 /* --- responsive --- */
 
-@media  screen and (max-width:800px){
-    .receive-message div{
+@media screen and (max-width:800px) {
+    .receive-message div {
         width: 90%;
         margin: 0 auto;
         height: 150px;
         box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
     }
-    #previous-text{
+
+    #previous-text {
         top: 50%;
         left: 0.5%;
     }
-    #next-text{
+
+    #next-text {
         right: 0.5%;
         top: 50%;
     }
-    #previous{
+
+    #previous {
         /* top: 90%;
         left: 0.5%; */
     }
-    #next{
+
+    #next {
         /* font-size: 30px;
         right: 0.5%;
         top: 90%; */
     }
 
-    #text-area{
+    #text-area {
         background-color: aliceblue;
     }
-    form{
+
+    form {
         padding-top: 120px;
     }
-    #message-input{
+
+    #message-input {
         border: black 1px solid;
         height: 130px;
         width: 100%;
@@ -222,24 +246,29 @@ cursor: pointer;
 
 
     }
-    #send-button{
+
+    #send-button {
         left: 82%;
         top: 76%;
     }
-    form div{
+
+    form div {
         box-shadow: -1px 5px 10px 2px rgba(0, 0, 0, 0.5);
         width: 90%;
         margin: 0 auto;
         height: 120px;
     }
-    .logo img{
+
+    .logo img {
         left: 0;
     }
-    .logo h1{
+
+    .logo h1 {
         left: 27%;
         font-size: 25px;
     }
-    #isTyping{
+
+    #isTyping {
         left: 10%;
         top: 115%;
     }
@@ -247,8 +276,15 @@ cursor: pointer;
 }
 
 
-@keyframes bg-anim{
-    from{-webkit-transform: scale(0)};
-    to{-webkit-transform: scale(1);}
+@keyframes bg-anim {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    ;
+
+    to {
+        -webkit-transform: scale(1);
+    }
 
 }

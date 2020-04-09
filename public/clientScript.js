@@ -1,10 +1,10 @@
 const client = io();
 // ------ alert timeout 2seconds---
 
-// window.onload = setTimeout(function () {
-//     alert('This is an alert');
-//     window.location = 'http://localhost:3000';
-// }, 5000);
+window.onload = setTimeout(function () {
+    alert('This is an alert');
+    window.location = 'http://localhost:3000';
+}, 5000);
 
 
 // ---- manipulate the DOM
@@ -22,7 +22,6 @@ const next = document.querySelector('#next-text');
 // ----- get name and emit it to all connected sockets
 
 const name = prompt('what is your name ? ');
-// appendMessage('....welcome..... ');
 client.emit('new-user', name);
 
 
@@ -32,7 +31,8 @@ client.on('user-connected', name => {
         window.alert(`${name} connected`);
     }, 1000);
 });
-// getMessages();
+
+
 // ---- disconnected 
 
 client.on('user-disconnected', name => {
@@ -54,10 +54,10 @@ client.on("notifyTyping", data => {
     console.log(data.message);
 });
 
-// //-----stop typing
-// messageInput.addEventListener("keyup", () => {
-//     client.emit("stopTyping", "");
-// });
+//-----stop typing
+messageInput.addEventListener("keyup", () => {
+    client.emit("stopTyping", "");
+});
 
 messageInput.addEventListener("keyup", () => {
     client.emit("stopTyping", "");
@@ -74,6 +74,7 @@ client.on("notifyStopTyping", () => {
 function manipText(text) {
     text_area.innerHTML = text;
 };
+
 /*----------- get ts data from the db after a get request ---*/
 
 client.on('sent-last-text', lastText => {
@@ -82,18 +83,9 @@ client.on('sent-last-text', lastText => {
 });
 
 
-// ---- function append message
-
-
-function appendMessage(message) {
-    const messageElement = document.createElement('div');
-    messageElement.innerText = message;
-    messageContainer.append(messageElement);
-};
-
 // ---- display text on the receiver ---
+
 client.on('emit-chat', message => {
-    // console.log(message);-----test
     manipText(message);
 });
 
@@ -114,6 +106,7 @@ messageForm.addEventListener('submit', e => {
     sendMessage(send);
 
     // console.log(send);------ test
+
     getMessages();
 
     messageInput.value = '';
@@ -152,17 +145,19 @@ async function geet() {
 
 geet();
 
+// --- previous text even listener 
+
 previous.addEventListener('submit', e => {
     e.preventDefault();
     lastText = dataOf[counter - 1];
     manipText(lastText.message);
-    // client.emit('last-text', lastText);
     console.log(lastText.message);
     console.log(counter);
     counter = counter - 1;
     console.log(counter);
 });
 
+// --- next text event listener
 next.addEventListener('submit', e => {
     e.preventDefault();
     lastText = dataOf[counter + 1];
