@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>essie</title>
+    <link rel="stylesheet" href="./chat.css">
+
+    <!-- jquer ajax cdn -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container group">
+
+        <!-- logo -->
+
+        <div class="logo">
+            <img src="./prg.png" alt="lets chat">
+            <h1>lets talk ...</h1>
+        </div>
+
+        <!-- received message section -->
+
+        <div class="receive-message">
+            <div><textarea name="textarea" contenteditable="false" id="text-area" cols="30" rows="10"></textarea></div>
+            <section id="isTyping"></section>
+
+            <form action="" id="previous-text"><button type="submit" id="previous">&#8249;&#8249;</button></form>
+            <form action="" id="next-text"><button type="submit" id="next">&#8250;&#8250;</button></form>
+
+        </div>
+
+        <!-- form to hundle input messages-->
+
+        <form action="" id="send-container">
+
+            <div><textarea name="txt" id="message-input" placeholder=".....type text ..." cols="30" class="group"
+                    rows="5"></textarea></div>
+
+            <br>
+
+            <button type="submit" id="send-button" class="btn btn-send group">Send</button>
+
+            <br>
+        </form>
+
+        <button id="delete" class="btn btn-deletedb ">deleteDatabase</button>
+
+    </div>
+
+    <!-- socket.io cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+
+    <!-- client script view control javascript -->
+
+    <script src="./clientScript.js"></script>
+
+</body>
+
+</html>
