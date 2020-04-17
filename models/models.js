@@ -6,9 +6,10 @@ const Schema = mongoose.Schema;
 const messageSchema = new Schema({
     name: String,
     message: String
-})
+});
 
-const messageModel = mongoose.model('message', messageSchema)
+// --- modelname = mongoose.model('collectionName', schema name)
+const messageModel = mongoose.model('message', messageSchema);
 
 module.exports = messageModel; 
 
