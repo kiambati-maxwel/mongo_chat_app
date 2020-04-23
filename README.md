@@ -8,7 +8,7 @@ conveyed two way unlike chat applications where text messages sent and received 
 
 if need be one can uccess previous messages from the database using previous button and next buttons.
 
-The appllication utilises #node js #express #socket.io #mongoose #atlas mongo db.
+The appllication utilises #node js #express #socket.io #mongoose #atlas mongo db and passport authentication
 
 
 

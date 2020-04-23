@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+// const { ensureAuthenticated }  = require('../../config/auth');
 const messageModel = require('../../models/models')
 
 

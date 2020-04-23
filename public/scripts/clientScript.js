@@ -15,18 +15,21 @@ const messageInput = document.querySelector('#message-input');
 const deleteDb = document.querySelector('#delete');
 const text_area = document.querySelector('#text-area');
 const isTyping = document.querySelector('#isTyping');
-const previous = document.querySelector('#previous-text');
-const next = document.querySelector('#next-text');
+const previous = document.querySelector('#previous');
+const next = document.querySelector('#next');
+const userName = document.querySelector('#userName');
+const myName = userName.innerText;
+// console.log(myName);
 
 
 // ----- get name and emit it to all connected sockets
-async function user (){
-    const name = prompt('what is your name ? ');
-    await client.emit('new-user', name);
-}
-user();
+// async function user (){
+//     const name = prompt('what is your name ? ');
+//     await client.emit('new-user', name);
+// }
+// user();
 
-    
+
 // ----- log the name to connected sockets
 client.on('user-connected', name => {
     setTimeout(() => {
@@ -37,11 +40,11 @@ client.on('user-connected', name => {
 
 // ---- disconnected 
 
-const disconnected = async () => {
-    await client.on('user-disconnected', name => {
-      window.alert(`${name} --- disconnected`);
-    });
-}
+// const disconnected = async () => {
+//     await client.on('user-disconnected', name => {
+//       window.alert(`${name} --- disconnected`);
+//     });
+// }
 
 //----isTyping event
 
@@ -76,12 +79,14 @@ client.on("notifyStopTyping", () => {
 
 function manipText(text) {
     text_area.innerHTML = text;
+
 };
+
 
 /*----------- get ts data from the db after a get request ---*/
 
 client.on('sent-last-text', lastText => {
-    console.log(lastText);
+    // console.log(lastText);
     manipText(lastText.message);
 });
 
@@ -97,22 +102,28 @@ client.on('emit-chat', message => {
 messageForm.addEventListener('submit', e => {
     e.preventDefault();
 
+
     const message = messageInput.value;
     client.emit('emit-chat', message);
 
-    // console.log(message);
-    const send = {
-        name: name,
-        message: messageInput.value
-    };
+    if (messageInput.value === '') {
+        e.defaultPrevented;
+    } else {
+        // console.log(message);
+        const send = {
+            name: myName,
+            message: messageInput.value
+        };
 
-    sendMessage(send);
+        sendMessage(send);
 
-    // console.log(send);------ test
+        // console.log(send);------ test
 
-    getMessages();
+        getMessages();
 
-    messageInput.value = '';
+        messageInput.value = '';
+
+    }
 
 });
 
@@ -148,22 +159,40 @@ async function geet() {
 
 geet();
 
+// ---- refresh page 
+let lastReceived = '' 
+let timer = setInterval(() => {
+    if(messageInput.value === ''){
+        console.log('refreshed');
+        location.reload().then(()=>{
+            manipText(dataOf[dataOf.length-1].message);
+        });
+    }
+}, 360000);
 // --- previous text even listener 
 
-previous.addEventListener('submit', e => {
-    e.preventDefault();
+previous.addEventListener('click', e => {
     lastText = dataOf[counter - 1];
+    if (lastText.name === myName) {
+        text_area.style.color = 'green';
+    } else {
+        text_area.style.color = 'brown';
+    }
     manipText(lastText.message);
-    console.log(lastText.message);
-    console.log(counter);
+    // console.log(lastText.message);
+    // console.log(counter);
     counter = counter - 1;
-    console.log(counter);
+    // console.log(counter);
 });
 
 // --- next text event listener
-next.addEventListener('submit', e => {
-    e.preventDefault();
+next.addEventListener('click', e => {
     lastText = dataOf[counter + 1];
+    if (lastText.name === myName) {
+        text_area.style.color = 'green';
+    } else {
+        text_area.style.color = 'brown';
+    }
     manipText(lastText.message);
     counter = counter + 1;
 })
@@ -179,7 +208,7 @@ function getMessages() {
         });
 
         console.log(dataOf);
-        console.log(counter);
+        // console.log(counter);
     });
 };
 

@@ -52,6 +52,31 @@ f *:after {
     font-family: monospace;
     color: rgba(0, 0, 0, 0.863);
 }
+.logo h2{
+    display: none;
+}
+.log-me-out{
+    position: absolute;
+    text-decoration: none;
+    color: rgb(14, 14, 56);
+    right: 10%;
+    top: 17%;
+    font-size: 22px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.log-me-out:hover{
+    color: rgb(5, 5, 110);
+}
+.log-me-out span{
+   padding: 5px 15px 5px 15px;
+    border-radius: 50%;
+    background-color: brown;
+    color: brown;
+    margin-left: 4px;
+}
+.log-me-out:hover>span{
+    background-color: rgb(246, 3, 3);
+}
 
 /* --- istyping to hundle typing info --- */
 #isTyping {
@@ -97,36 +122,10 @@ f *:after {
     font-size: 25px;
     letter-spacing: 3px;
     background-color: rgb(216, 234, 250);
-}
-
-#text-are:focus {
-    border: none;
-}
-
-#text-area:focus-within {
-    border: none;
+    outline: none;
 }
 
 /* --- previous next btn --- */
-
-#previous-text,
-#next-text {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-}
-
-#previous-text {
-
-    top: 35%;
-    left: 18.5%;
-}
-
-#next-text {
-
-    right: 23%;
-    top: 35%;
-}
 
 #previous,
 #next {
@@ -135,23 +134,28 @@ f *:after {
     border-radius: 50%;
     border: none;
     background-color: rgb(155, 255, 137);
-
+    position: absolute;
+    outline: none;
 }
 
 #previous {
     border-left: solid black 2px;
     font-size: 30px;
+    top: 58%;
+    left: 18.5%;
 }
 
 #previous:hover,
 #next:hover {
     cursor: pointer;
+    outline: none;
+    background-color: rgb(6, 255, 18);
 }
 
 #next {
     font-size: 30px;
-    /* right: 23%;
-    top: 58%; */
+    right: 23%;
+    top: 58%;
 }
 
 /* --- send container --- */
@@ -172,7 +176,7 @@ form {
     line-height: 1.5rem;
     font-size: 22px;
     letter-spacing: 5px;
-
+    outline: none;
 }
 
 /* --- send btn --- */
@@ -186,10 +190,12 @@ form {
     left: 62%;
     top: 61%;
     background-color: rgb(155, 255, 137);
+    outline: none;
 }
 
 #send-button:hover {
     cursor: pointer;
+    background-color: rgb(6, 255, 18);
 }
 
 .btn-deletedb {
@@ -206,25 +212,17 @@ form {
         box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
     }
 
-    #previous-text {
-        top: 50%;
+    
+
+    #previous {
+        top: 90%;
         left: 0.5%;
     }
 
-    #next-text {
-        right: 0.5%;
-        top: 50%;
-    }
-
-    #previous {
-        /* top: 90%;
-        left: 0.5%; */
-    }
-
     #next {
-        /* font-size: 30px;
+        font-size: 30px;
         right: 0.5%;
-        top: 90%; */
+        top: 90%;
     }
 
     #text-area {
@@ -268,6 +266,15 @@ form {
         font-size: 25px;
     }
 
+    .logo h1 span{
+        color: rgb(29, 28, 28);
+    }
+
+    .log-me-out{
+        top: 5%;
+        right: 2%;
+    }
+    
     #isTyping {
         left: 10%;
         top: 115%;
@@ -288,3 +295,4 @@ form {
     }
 
 }
+

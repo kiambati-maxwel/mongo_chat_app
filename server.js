@@ -1,11 +1,23 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const dburl = 'mongodb+srv://netbot:mongodb6595@cluster0-khehv.gcp.mongodb.net/essie?retryWrites=true&w=majority';
+// const dburl = 'mongodb+srv://netbot:mongodb6595@cluster0-khehv.gcp.mongodb.net/essie?retryWrites=true&w=majority';
 const app = express();
 const message = require('./models/models');
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+const db = require('./config/dbkeys').mongoURL;
+const expressLayouts = require('express-ejs-layouts');
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport')
+
+// passportconfig
+require('./config/passport')(passport);
+
+// ejs
+app.use(expressLayouts);
+app.set('view engine', 'ejs');
 
 
 //------ Enable CORS
@@ -28,9 +40,6 @@ app.use(express.urlencoded({
     extended: false
 }));
 
-// ----- access api router API
-
-app.use('/api/messages', require('./routes/api/messages'));
 
 
 // ------set static folder 
@@ -40,7 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // --- connect mongoose atlass db
 
 async function connect() {
-    await mongoose.connect(dburl, {
+    await mongoose.connect(db, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
@@ -59,6 +68,35 @@ mongoose.connection.once('open', () => {
     console.log('connection error ---> ', error);
 });
 
+// express session
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true,
+    // cookie: {secure: true}
+}));
+
+// passport middle ware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// connect flash 
+app.use(flash());
+
+// global variables
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+})
+
+// ----- access api router API
+
+app.use('/api/messages', require('./routes/api/messages'));
+app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
+
 // ------ socket.io --------- 
 
 io.on('connection', client => {
@@ -68,16 +106,17 @@ io.on('connection', client => {
 
     const users = {};
     client.on('new-user', name => {
-        users[client.id] = name;
+        name = userName;
+        console.log(name);
         client.broadcast.emit('user-connected', name);
     });
 
     // ----- hundle disconnect ----
 
-    client.on('disconnect', () => {
-        client.broadcast.emit('user-disconnected', users[client.id]);
-        delete users[client.id];
-    });
+    // client.on('disconnect', name => {
+    //     name = userName;
+    //     client.broadcast.emit('user-disconnected', name);
+    // });
 
 
     client.on('emit-chat', message => {
