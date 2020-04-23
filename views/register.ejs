@@ -1,0 +1,44 @@
+
+
+    <div class="body-bg">
+        <section class="container-form">
+            <section class="global-form">
+                <form  class="my-form " action="/users/register" method="POST">
+                    <h1>Sign up now </h1>
+    
+                   
+                    <%- include ("./partials/messages") %>
+                   
+                
+                    <div class="form-group">
+                        <input id="form-name" type="text" name="name" class="input-form" value="<%= typeof name != 'undefined' ? name : ''%>" required>
+                        <label id="form-label">Name: </label>
+                    </div>
+                    <div class="form-group">
+                        <input id="form-email" type="email" name="email" class="input-form" value="<%= typeof name != 'undefined' ? name : ''%>" required>
+                        <label id="form-label">Email: </label>                   </div>
+                    <div class="form-group">
+                        
+                        <input id="form-password" type="password" name="password" class="input-form" value="<%= typeof name != 'undefined' ? name : ''%>" required>
+                        <label id="form-label">Password: </label>                    </div>
+                    <div class="form-group">
+                        <input id="form-password2" type="password" name="password2" class="input-form" value="<%= typeof name != 'undefined' ? name : ''%>" required>
+                        <label id="form-label">Confirm Password: </label>                    </div>
+                    
+                    <input class="btn-form" type="submit" value="submit" name="" class="input-form">
+    
+                    <p class="if-account">have an account ?   --  <span><a href="/users/login">   login</a></span></p>
+                    <a href="/" class="cancel-form">&times;</a>
+                </form>
+        
+        
+            </section>
+        
+        </section>
+        
+        
+        </section>
+        
+    </div>
+    
+

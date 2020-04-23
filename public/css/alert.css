@@ -1,0 +1,21 @@
+.alert-messages{
+    position: absolute;
+    left: 22%;
+    top: 2%;
+    text-align: center;
+    color: rgb(8, 8, 8);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    width: 60%;
+    margin: auto;
+    font-size: 27px;
+} 
+.alert-error{
+    background-color: rgb(255, 59, 34);
+}
+
+.alert-success{
+    background-color: rgb(4, 156, 4);
+}
+

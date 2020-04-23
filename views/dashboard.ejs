@@ -1,0 +1,47 @@
+
+    <div class="container group">
+
+        <!-- logo -->
+
+        <div class="logo">
+            <img src="./images/prg.png" alt="lets chat">
+            <h1><span>lets </span> chat ...</h1>
+            <h2 id="userName"><%= userName %></h2>
+        </div>
+
+        <!-- received message section -->
+
+        <div class="receive-message">
+            <div><textarea name="textarea" contenteditable="false" id="text-area" cols="30" rows="10"></textarea></div>
+            <section id="isTyping"></section>
+
+            <button type="submit" id="previous">&#8249;&#8249;</button>
+            <button type="submit" id="next">&#8250;&#8250;</button>
+            <a href="/users/logout" class="log-me-out"> log out <span>.</span></a>
+           
+        </div>
+
+        <!-- form to hundle input messages-->
+
+        <form action="" id="send-container">
+
+            <div><textarea name="txt" id="message-input" placeholder=".....type text ..." cols="30" class="group"
+                    rows="5"></textarea></div>
+
+            <br>
+
+            <button type="submit" id="send-button" class="btn btn-send group">Send</button>
+
+            <br>
+        </form>
+
+        <button id="delete" class="btn btn-deletedb ">deleteDatabase</button>
+
+    </div>
+
+    <!-- socket.io cdn -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script> -->
+
+    <!-- client script view control javascript -->
+
+    <!-- <script src="./clientScript.js"></script> -->

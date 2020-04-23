@@ -1,0 +1,192 @@
+
+/* ====================body================== */
+.body-bg{
+    border: solid 1px black;
+    color: rgb(0, 24, 34);
+    font-family: 'Quicksand', sans-serif;
+    height: 100vh;
+    background-image: url("../../images/illustration-4701783_1920.png");
+
+}
+/* ====================== typography ================= */
+.form-group,.my-form h1, .btn-form, .input-form, .textarea-form {
+         color: black
+}
+
+
+ /* ====================grid=============== */
+
+.container-form{
+    width: 80%;
+    margin: auto;
+    padding-top: 0;
+}
+.global-form{
+    width: 40%;
+    margin: auto;
+    padding: 22px;
+    margin-top: 5em;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
+    animation-duration: 2s;
+}
+
+/* ==================button================== */
+.btn-form{
+    padding: 8px 15px 8px 15px;
+    background-color: #03a9f4;
+    color: black;
+    letter-spacing: .5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: absolute;
+    top: 80%;
+    bottom: 0;
+    left: 0;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    font-size: 20px;
+    margin-left: 30%;
+    outline: none; 
+    height: 35px; 
+}
+.btn-form:hover{
+    background-color: #2196f3;
+    cursor: pointer;
+}
+
+/* ==================form================ */
+
+.my-form{
+    padding: 22px;
+}
+.my-form h1{
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 33px;
+}
+.form-group{
+    position: relative;
+}
+
+/* input */
+.form-group input{
+    font-size: 16px;
+    margin-bottom: 30px;
+    border: none;
+    outline: none;
+    letter-spacing: 2px;
+    background: transparent;
+    text-align: center;
+    padding: 10px;
+    border-bottom: solid 1px #2730355b
+}
+.form-group label{
+    position: absolute;
+    top: 13px;
+    bottom: 0;
+    left: 0;
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+    padding: 2px solid #2ecc71;
+}
+
+.form-group input:focus~label,
+.form-group input:valid~label{
+    top: -10px;
+    left: 0;
+    color: rgb(68, 4, 170);
+    font-size: 15px;
+}
+
+.my-form input[type="text"],
+.my-form input[type="email"]{
+    padding: 0.5m;
+    width: 80%;
+}
+
+.login-input{
+    margin-top: 50px;
+}
+ .login-input #form-label  label{
+     padding-top: 37px;
+ }
+/* =============== error ============= */
+.error{
+    background-color: rgba(187, 101, 101, 0.719);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.if-account{
+    padding-top: 40px;
+    color: rgb(0, 0, 0);
+    
+}
+
+.if-account a{
+    color: green;
+    text-decoration: none;
+}
+
+.cancel-form{
+    text-decoration: none;
+    font-size: 44px;
+    font-weight: 600;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: rgb(138, 3, 3);
+
+    
+}
+
+/* =================responsive========= */
+@media screen and (max-width:800px){
+  
+     .body-bg{
+         width: 100%;
+         border: solid .2px rgba(0, 0, 0, 0);
+     }
+     .global-form{
+         width: 85%;
+         height: 500px;
+     }
+     .my-form{
+         width: 100%;
+         padding: 0%
+
+      } 
+     .container-form{
+         width: 100%;
+     } 
+     .form-group{
+         height: 100%;
+         padding: 5px;
+         margin: 0;
+         box-shadow: none;
+         padding-top: 17px;
+     }
+     .form-group  input{
+         padding: 0;
+         width: 100%;
+     }
+     .form-group label{
+         top: 0;
+     }
+     .my-form input[type="text"],
+     .my-form input[type="email"]{
+         width: 100%;
+     }
+     .my-form h1{
+         margin-bottom: 10px;
+     }
+     .login-screen{
+        margin-bottom: 150px;
+    }
+
+}

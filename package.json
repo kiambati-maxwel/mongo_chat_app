@@ -1,0 +1,35 @@
+{
+  "name": "amor_chat_app",
+  "version": "1.0.0",
+  "description": "this is a node js chat app",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiambati-maxwel/mongo_chat_app.git"
+  },
+  "author": "kiambati-maxwel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiambati-maxwel/mongo_chat_app/issues"
+  },
+  "homepage": "https://github.com/kiambati-maxwel/mongo_chat_app#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.1",
+    "mongodb": "^3.5.5",
+    "mongoose": "^5.9.7",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
